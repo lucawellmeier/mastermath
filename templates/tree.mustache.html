@@ -1,0 +1,7 @@
+<ul>{{#children}}
+  {{#isfolder}}<li>
+    <strong>{{title}}</strong>
+    {{>tree}}
+  </li>{{/isfolder}}
+  {{#isfile}}<li><a href="{{output}}">{{title}}</a></li>{{/isfile}}
+{{/children}}</ul>
