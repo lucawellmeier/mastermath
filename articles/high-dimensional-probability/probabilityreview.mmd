@@ -38,8 +38,8 @@ One important estimate:
 ## Variance
 
 We define variance and the related covariance by
-$$\operatorname{Var}(X) = E (X - EX)^2 \quad \quad
-\operatorname{Cov}(X,Y) = E(X - EX)(Y - EY).$$
+$$\begin{aligned}\operatorname{Var}(X) &= E (X - EX)^2 \\
+\operatorname{Cov}(X,Y) &= E(X - EX)(Y - EY).\end{aligned}$$
 We call two random variables $X,Y$ uncorrelated if 
 $\operatorname{Cov}(X,Y) = 0$ (this is the case for example for 
 independent variables). Again we summarize basic properties:
@@ -71,8 +71,8 @@ They are, in fact, Banach spaces for $p \geq 1$ by the Minkowski
 inequality below. In case $p = 2$ we have a Hilbert space with inner
 product $\langle X,Y\rangle_{L^2} = E (XY)$.
 In this notation we may rewrite
-$$ \operatorname{Var}(X) = \lVert X - EX \rVert_{L^2}^2 
-\quad \quad \operatorname{Cov}(X,Y) = \langle X - EX, Y - EY \rangle_{L^2}.$$
+$$\begin{aligned} \operatorname{Var}(X) &= \lVert X - EX \rVert_{L^2}^2 \\
+\operatorname{Cov}(X,Y) &= \langle X - EX, Y - EY \rangle_{L^2}. \end{aligned}$$
 
 We recall important estimates:
 > - **Jensen's inequality.** If $\varphi \colon \mathbb{R} \to \mathbb{R}$ 
