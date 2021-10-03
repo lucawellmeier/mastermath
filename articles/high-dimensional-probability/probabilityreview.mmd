@@ -1,0 +1,86 @@
+# Review of Probability Theory
+
+In this section all random variables are assumed to be real-valued.
+
+## Expectation
+
+The expectation $EX$ of a random variable $X$ is defined by 
+$$EX = \int_\Omega X \, dP$$
+and we recall the most important properties:
+
+> - $E[1_A] = P(A)$ if $A$ is an event.
+> - Let $F(t) = P(X \leq t)$ be the cumulative distribution function. Then
+>   $$EX = \int_0^\infty (1 - F(t)) \, dt - \int_{-\infty}^0 F(t) \, dt.$$
+> - $X \geq 0$ a.s. implies $EX \geq 0$.
+> - $E(aX + bY) = aEX + bEY$.
+> - $X \leq Y$ a.s. implies $EX \leq EY$.
+> - If $X$ and $Y$ are independent, then $E(XY) = EX \, EY$.
+> - $E|X| = 0$ implies $X = 0$ a.s.
+> - $X = c$ a.s. implies $EX = c$.
+
+Let us recall the most important convergence theorems as well:
+
+> - **Monotone convergence.** Let $X_n$ be a sequence of a.s. non-negative
+>   and a.s. non-decreasing random variables. If $X_n \rightarrow X$ pointwise, 
+>   then $\lim EX_n = X$.
+> - **Fatou's lemma.** Let $X_n$ be a sequence of a.s. non-negative random
+>   variables. Then $E(\lim\inf X_n) \leq \lim\inf EX_n$.
+> - **Dominated convergence.** Let $X_n$ be a sequence of random variables
+>   a.s. point-wisely convergent to $X$ and let $|X_n| \leq Y$ be dominated
+>   by a random variable with $EY < \infty$. Then $EX \leq EY$, 
+>   $\lim EX_n = EX$ and $\lim E(X_n - X) = 0$.
+
+One important estimate:
+
+> **Markov's inequality.** If $X \geq 0$ a.s. and $t > 0$, then
+> $$P(X \geq t) \leq \frac{EX}{t}.$$
+
+## Variance
+
+We define variance and the related covariance by
+$$\operatorname{Var}(X) = E (X - EX)^2 \quad \quad
+\operatorname{Cov}(X,Y) = E(X - EX)(Y - EY).$$
+We call two random variables $X,Y$ uncorrelated if 
+$\operatorname{Cov}(X,Y) = 0$ (this is the case for example for 
+independent variables). Again we summarize basic properties:
+> - $\operatorname{Var}(X) \geq 0$.
+> - $\operatorname{Var}(X) = 0$ iff $X = c$ a.s.
+> - $\operatorname{Var}(X + c) = \operatorname{Var}(X)$.
+> - $\operatorname{Var}(cX) = c^2 \operatorname{Var}(X)$.
+> - $\operatorname{Var}(aX + bY) = a^2 \operatorname{Var}(X) 
+>   + b^2 \operatorname{Var}(X) + 2ab\operatorname{Cov}(X,Y).$
+> - In general, $\operatorname{Var}(\sum a_n X_n) = 
+>   \sum a_i^2 \operatorname{Var}(X_i) + 
+>   2 \sum_{i < j} a_i a_j \operatorname{Cov}(X,Y).$
+> - For $X_i$ uncorrelated: $\operatorname{Var}
+>   (\sum X_i) = \sum \operatorname{Var}(X_i)$.
+> - For indepdent random variables: $\operatorname{Var}(XY) = 
+>   EX^2 \, EY^2 - (EX)^2 (EY)^2$.
+
+> **Chebyshev's inequality.** For any $X$ and all $t > 0$, 
+> $$P(|X - EX| \geq t) \leq \frac{\operatorname{Var}(X)}{t^2}.$$
+
+## $L^p$ spaces
+
+We call $E X^p$ the $p$-th moment of $X$ ($p > 0$) and $E|X|^p$ the absolute 
+moment. Then define $\lVert X \rVert_{L^p} = (E |X|^p)^{1/p}$ for 
+$0 < p < \infty$ and for $p = \infty$: 
+$\lVert X \rVert_{L^\infty} = \operatorname{ess}\sup |X|$, which allows us 
+to define the spaces $L^p = \{ X \mid \lVert X \rVert_{L^p} < \infty \}$.
+They are, in fact, Banach spaces for $p \geq 1$ by the Minkowski 
+inequality below. In case $p = 2$ we have a Hilbert space with inner
+product $\langle X,Y\rangle_{L^2} = E (XY)$.
+In this notation we may rewrite
+$$ \operatorname{Var}(X) = \lVert X - EX \rVert_{L^2}^2 
+\quad \quad \operatorname{Cov}(X,Y) = \langle X - EX, Y - EY \rangle_{L^2}.$$
+
+We recall important estimates:
+> - **Jensen's inequality.** If $\varphi \colon \mathbb{R} \to \mathbb{R}$ 
+>   is convex, then $$\varphi(EX) \leq E \varphi(X).$$
+> - As a simple consequence: $\lVert X \rVert_{L^p} \leq 
+>   \lVert X \rVert_{L^q}$ for $0 \leq p \leq q \leq \infty$.
+> - **Minkowski's inequality.** $\lVert X + Y \rVert_{L^p} \leq 
+>   \lVert X \rVert_{L^p} + \lVert Y \rVert_{L^p}$ for $1 \leq p \leq \infty$.
+> - **Hölder's inequality.** Let $p,q \in [1,\infty]$ be conjugate and
+>   $X \in L^p$, $Y \in L^q$, then
+>   $$ E(XY) \leq \lVert X \rVert_{L^p} \lVert Y \rVert_{L^q}. $$
